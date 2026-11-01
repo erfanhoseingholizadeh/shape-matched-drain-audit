@@ -7,7 +7,7 @@ This repository holds the code behind the paper
 
 The paper asks whether pneumothorax classifiers trained on NIH ChestX-ray14 rely on chest drains. A synthetic tube is drawn into films that show a pneumothorax without a drain (the targets), and the change in the classifier's logit is measured. Because a tube-shaped patch of tissue can move the score by itself, each edit is paired with a control that copies another patient's pixels into the same footprint. The main contrast is the rendered tube minus that tissue patch. We audit five DenseNet-121 and five ResNet-50 checkpoints, check the audit on checkpoints that were trained with a planted tube, and read a held-out half of the test split once under a protocol fixed beforehand. The paper has the results and their limits; this README does not repeat them.
 
-Code is at https://github.com/YOURUSER/shape-matched-drain-audit. The data, the trained checkpoints, the per-image scores and the composites are not in this repository. The derived files (split manifests, checkpoints, per-image scores, composite metadata) will be deposited on acceptance and follow the licence of the NEATX labels (CC BY-NC-SA).
+Code is at https://github.com/erfanhoseingholizadeh/shape-matched-drain-audit. The data, the trained checkpoints, the per-image scores and the composites are not in this repository. The derived files (split manifests, checkpoints, per-image scores, composite metadata) will be deposited on acceptance and follow the licence of the NEATX labels (CC BY-NC-SA).
 
 ## Layout
 
@@ -153,7 +153,7 @@ Please cite the paper. `CITATION.cff` has the metadata of this repository.
 @unpublished{hoseingholizadeh2027drain,
   title  = {Do Synthetic Chest-Drain Edits Reveal Shortcut Reliance? A Shape-Matched Audit of Pneumothorax Classifiers},
   author = {Hoseingholizadeh, Erfan and Khanmohammadi, Mahdieh and Farmanbar, Mina},
-  note   = {Submitted to ISBI 2027; code at https://github.com/YOURUSER/shape-matched-drain-audit}
+  note   = {Submitted to ISBI 2027; code at https://github.com/erfanhoseingholizadeh/shape-matched-drain-audit}
 }
 ```
 
