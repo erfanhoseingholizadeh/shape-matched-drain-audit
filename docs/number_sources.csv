@@ -39,7 +39,6 @@ i91-funnel-neatx-pat,64,handoff,recorded in the study record (not released),,,
 i91-manip-dn-strong-effect,0.617,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-neg-dn-pl-strong-manip,0.0005
 i91-margin-end-dn,0.071,verified,paper_values/margins_and_spans.py,review/margins_and_spans/isbi_values.json,margin_end.densenet121,0.0005
 i91-margin-end-rn,0.168,verified,paper_values/margins_and_spans.py,review/margins_and_spans/isbi_values.json,margin_end.resnet50,0.0005
-i91-n-int-above-bar,9,verified,paper_values/margins_and_spans.py,review/margins_and_spans/isbi_values.json,validity.n_ci_wholly_above_bar_both,0.5
 i91-pl-dn-strong-h90,3.957,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-pl-strong-h90,0.0005
 i91-pl-dn-strong-l90,3.699,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-pl-strong-l90,0.0005
 i91-pl-dn-weak-h90,0.075,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-pl-weak-h90,0.0005
@@ -262,21 +261,20 @@ i93-g-rn-rt-m,-0.006,verified,paper_values/heldout_values.py,review/heldout_valu
 i93-g-rn-tt-hi,0.167,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tt-h95,0.0005
 i93-g-rn-tt-lo,0.073,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tt-l95,0.0005
 i93-g-rn-tt-m,0.114,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tt-m,0.0005
+i98-chance-auc,0.5,derived,recorded in the study record (not released),,,0.0001
+i98-g-dn-cdisks-abs,0.399,derived,recorded in the study record (not released),,,0.0005
+i98-g-rn-cdisks-abs,0.482,derived,recorded in the study record (not released),,,0.0005
 m-bootstrap-resamples,"2,000",handoff,recorded in the study record (not released),,,
 m-clause-a-threshold,0.82,handoff,recorded in the study record (not released),,,
 m-clause-b-threshold,0.001,handoff,recorded in the study record (not released),,,
 m-rca-threshold,0.7,handoff,recorded in the study record (not released),,,
 m-total-images,"112,120",verified,data_prep/dataset_split_counts.py,review/dataset_splits/split_counts.json,total_images,
 m-total-patients,"30,805",verified,data_prep/dataset_split_counts.py,review/dataset_splits/split_counts.json,total_patients,
-p55-sweep-fails,3,verified,scripts/population_claims_check.py,review/population_claims/outputs/population_claims_snapshot.json,summary.fails,1e-06
 p55-sweep-n-claims,25,verified,scripts/population_claims_check.py,review/population_claims/outputs/population_claims_snapshot.json,n_claims,1e-06
 p57-a-int-densenet-min,0.871,verified,paper_values/validity_values.py,review/population_assignment/outputs/manuscript_values.json,a_R_int_densenet121_min,0.0005005
 p57-a-int-resnet-min,0.846,verified,paper_values/validity_values.py,review/population_assignment/outputs/manuscript_values.json,a_R_int_resnet50_min,0.0005005
-p83-e3-dn-e3hi-delta,0.163,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-e3hi-delta,0.00051
 p83-e3-dn-e3hi-verdict,"EFFECT, positive",verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-e3hi-verdict,0
-p83-e3-dn-e3lo-delta,0.120,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-e3lo-delta,0.00051
 p83-e3-dn-e3lo-verdict,EQUIVALENT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-e3lo-verdict,0
-p83-e3-dn-weak-delta,0.096,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-weak-delta,0.00051
 p83-e3-dn-weak-verdict,EQUIVALENT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-dn-weak-verdict,0
 p83-e3-rn-e3lo-verdict,"EFFECT, positive",verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-rn-e3lo-verdict,0
 p83-e3-rn-weak-verdict,EQUIVALENT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e3-rn-weak-verdict,0
@@ -290,17 +288,13 @@ p83-e5-dn-ctl-limit,0.169,verified,paper_values/further_run_values.py,review/rep
 p83-e5-dn-ctl-mb-m,0.125,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-dn-ctl-mb-m,0.00051
 p83-e5-dn-ctl-rs-m,0.010,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-dn-ctl-rs-m,0.00051
 p83-e5-dn-margin512,0.149,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-dn-margin512,0.00051
-p83-e5-dn-orig-v224,EQUIVALENT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-dn-orig-v224,0
-p83-e5-dn-orig-v512,EFFECT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-dn-orig-v512,0
 p83-e5-rn-ctl-limit,0.185,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-rn-ctl-limit,0.00051
 p83-e5-rn-ctl-mb-m,-0.039,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-rn-ctl-mb-m,0.00051
 p83-e5-rn-ctl-rs-m,-0.081,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-rn-ctl-rs-m,0.00051
-p83-e5-rn-orig-v512,EFFECT,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-rn-orig-v512,0
 p83-e5-size,512,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-e5-size,0.5
 p83-n-patients,64,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-n-patients,0.5
 p83-n-targets,134,verified,paper_values/further_run_values.py,review/replication_512_readout/manuscript_values.json,p83-n-targets,0.5
 q-expl-dn-n-targets,214,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-expl-dn-n-targets,0.500000001
-q-gate-dn-cdisks-m,-0.399,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-cdisks-m,0.000500001
 q-gate-dn-ck-max,0.178,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-ck-max,0.000500001
 q-gate-dn-ck-min,-0.177,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-ck-min,0.000500001
 q-gate-dn-ck1-primary-h90,0.219,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-ck1-primary-h90,0.000500001
@@ -329,10 +323,7 @@ q-gate-dn-recipe-l95,-0.214,verified,paper_values/heldout_values.py,review/heldo
 q-gate-dn-rshape-h95,0.466,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-rshape-h95,0.000500001
 q-gate-dn-rshape-l95,0.362,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-rshape-l95,0.000500001
 q-gate-dn-rshape-m,0.406,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-rshape-m,0.000500001
-q-gate-dn-tshape-h95,0.068,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-tshape-h95,0.000500001
-q-gate-dn-tshape-l95,0.031,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-tshape-l95,0.000500001
 q-gate-dn-tshape-m,0.047,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-dn-tshape-m,0.000500001
-q-gate-rn-cdisks-m,-0.482,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-cdisks-m,0.000500001
 q-gate-rn-ck-max,0.057,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-ck-max,0.000500001
 q-gate-rn-ck-min,-0.378,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-ck-min,0.000500001
 q-gate-rn-inter-h95,0.403,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-inter-h95,0.000500001
@@ -353,8 +344,6 @@ q-gate-rn-recipe-l95,-0.334,verified,paper_values/heldout_values.py,review/heldo
 q-gate-rn-rshape-h95,0.465,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-rshape-h95,0.000500001
 q-gate-rn-rshape-l95,0.366,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-rshape-l95,0.000500001
 q-gate-rn-rshape-m,0.409,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-rshape-m,0.000500001
-q-gate-rn-tshape-h95,0.076,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tshape-h95,0.000500001
-q-gate-rn-tshape-l95,0.024,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tshape-l95,0.000500001
 q-gate-rn-tshape-m,0.047,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-gate-rn-tshape-m,0.000500001
 q-geo-max,0.474,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-geo-max,0.000500001
 q-geo-min,0.375,verified,paper_values/heldout_values.py,review/heldout_values/outputs/manuscript_values.json,q-geo-min,0.000500001

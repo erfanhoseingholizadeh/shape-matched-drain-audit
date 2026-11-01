@@ -14,3 +14,13 @@ __pycache__/
 /paper/*.bbl
 /paper/*.fls
 /paper/*.fdb_latexmk
+/composites/
+/manifests/
+/inputs/
+/dev_inputs/
+/paper_isbi/
+/figures_source/
+/COMMIT
+/SRC_TREE_DIGEST
+/SRC_TREE_DIGEST_RECIPE
+/INPUTS_DIGEST

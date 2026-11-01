@@ -1,4 +1,4 @@
-# Selects the example target of Fig. 1 by the committed rule and checks the persisted composite against its manifest.
+# Selects the example target for Fig. 1 by a fixed rule and checks the persisted composite against its manifest; imported by the Fig. 1 script.
 # Run: python3 paper_values/edit_example.py select | render
 
 from __future__ import annotations

@@ -12,6 +12,8 @@ sys.path.insert(0, str(ROOT))
 from analysis import positive_analysis as pa
 
 OUT = ROOT / "paper_isbi" / "tables"
+SHORT = {"dn": "DNet", "rn": "RNet"}
+DIR = {"positive": "Pos", "negative": "Neg", "not established": "NE"}
 
 def _analysis(name: str) -> dict:
     return json.loads((ROOT / f"review/heldout/confirmatory/analysis_{name}.json").read_text())
@@ -35,39 +37,47 @@ def render_gate() -> str:
         v0 = a["originals"]["verdict"]
         inside, direction, _ = _columns(a["originals"]["pooled"]["primary"], v0["margin"], v0["invert_constant"])
         h95 = "\\val{q-gate-dn-primary-h95-d4}" if arch == "dn" else "\\val{q-gate-rn-primary-h95}"
-        rows.append((f"{tag}, original", f"\\val{{q-gate-{arch}-primary-m}}", f"\\val{{q-gate-{arch}-primary-l90}} to \\val{{q-gate-{arch}-primary-h90}}",
-                     f"\\val{{q-gate-{arch}-primary-l95}} to {h95}", f"$\\pm$\\val{{q-margin-{arch}}}", inside, direction))
+        rows.append((f"{SHORT[arch]}, Orig.", f"\\val{{q-gate-{arch}-primary-m}}", f"[\\val{{q-gate-{arch}-primary-l90}},\\val{{q-gate-{arch}-primary-h90}}]",
+                     f"[\\val{{q-gate-{arch}-primary-l95}},{h95}]", f"$\\pm$\\val{{q-margin-{arch}}}", inside, direction))
     dn = _analysis("densenet121")
     weak = dn["planted"]["strengths"]["weak"]["primary"]
     inside, direction, _ = _columns(weak, dn["originals"]["verdict"]["margin"], dn["originals"]["verdict"]["invert_constant"])
 
-    rows.append(("DenseNet-121, weak planting", "\\val{q-gate-dn-pl-weak-m-s}", "\\val{i91-pl-dn-weak-l90} to \\val{i91-pl-dn-weak-h90}", "\\val{q-gate-dn-pl-weak-l95} to \\val{q-gate-dn-pl-weak-h95}",
+    rows.append(("DNet, Weak", "\\val{q-gate-dn-pl-weak-m-s}", "[\\val{i91-pl-dn-weak-l90},\\val{i91-pl-dn-weak-h90}]", "[\\val{q-gate-dn-pl-weak-l95},\\val{q-gate-dn-pl-weak-h95}]",
                  "$\\pm$\\val{q-margin-dn}", inside, direction))
     for arch, name, tag in (("dn", "densenet121", "DenseNet-121"), ("rn", "resnet50", "ResNet-50")):
         a = _analysis(name)
         s = a["planted"]["strengths"]["strong"]["primary"]
         inside, direction, v = _columns(s, a["originals"]["verdict"]["margin"], a["originals"]["verdict"]["invert_constant"])
         assert v["mean_over_invert_constant"] >= 1 and direction == "positive", (arch, v)
-        rows.append((f"{tag}, strong planting", f"\\val{{q-gate-{arch}-pl-strong-m}}", f"\\val{{i91-pl-{arch}-strong-l90}} to \\val{{i91-pl-{arch}-strong-h90}}",
-                     f"\\val{{q-gate-{arch}-pl-strong-l95}} to \\val{{q-gate-{arch}-pl-strong-h95}}", f"bar $\\geq$\\val{{q-invert-{arch}}}", inside, direction))
-    fmt = lambda rs: " \\\\\n".join(" & ".join(r) for r in rs) + " \\\\\n"
+        rows.append((f"{SHORT[arch]}, Strong", f"\\val{{q-gate-{arch}-pl-strong-m}}", f"[\\val{{i91-pl-{arch}-strong-l90}},\\val{{i91-pl-{arch}-strong-h90}}]",
+                     f"[\\val{{q-gate-{arch}-pl-strong-l95}},\\val{{q-gate-{arch}-pl-strong-h95}}]", f"bar $\\geq$\\val{{q-invert-{arch}}}", inside, direction))
+    fmt = lambda rs: "\n\n".join(f"{r[0]}\n& {r[1]} & {r[2]} - {r[3]} & {r[4]} & {'Y' if r[5] == 'yes' else 'N'} / {DIR[r[6]]} \\\\" for r in rs) + "\n"
     return (
-        "\\begin{table*}[t]\n"
-        "\\caption{Pooled contrast of the rendered tube minus tube-shaped tissue on the held-out targets (\\val{q-gate-dn-n-targets} images from \\val{q-gate-dn-n-patients} patients), in logits. "
-        "Within the margin: yes if the 90\\% interval lies inside the margin. Direction: positive or negative if the 95\\% interval excludes zero, otherwise not established. "
-        "For planted checkpoints (three seeds each) the bar is the INVERT constant, the contrast a clearly detectable effect must reach.}\n"
+        "\\begin{table}[t]\n"
+        "\\caption{Pooled tube--tissue logit contrast on held-out targets\n"
+        "(\\val{q-gate-dn-n-targets} images, \\val{q-gate-dn-n-patients} patients). CIs are 90\\% and 95\\%.}\n"
         "\\label{tab:verdicts}\n"
-        "\\centering\\small\n"
-        "\\begin{tabular}{@{}lcccccl@{}}\n"
+        "\\centering\n"
+        "\\scriptsize\n"
+        "\\setlength{\\tabcolsep}{1.5pt}\n"
+        "\\renewcommand{\\arraystretch}{1.15}\n"
+        "\\begin{tabular}{@{}lccccc@{}}\n"
         "\\toprule\n"
-        " & Contrast & 90\\% interval & 95\\% interval & Margin or bar & Within the margin & Direction \\\\\n"
+        "Checkpoint & Contrast & 90\\% CI - 95\\% CI & Margin & Verdict \\\\\n"
         "\\midrule\n"
         + fmt(rows[:2]) +
         "\\midrule\n"
         + fmt(rows[2:]) +
         "\\bottomrule\n"
         "\\end{tabular}\n"
-        "\\end{table*}\n"
+        "\n"
+        "\\vspace{2pt}\n"
+        "\\parbox{\\columnwidth}{\\scriptsize\n"
+        "DNet: DenseNet-121; RNet: ResNet-50. Y/N: within/outside equivalence margin.\n"
+        "NE: direction not established; Neg/Pos: negative/positive direction.\n"
+        "}\n"
+        "\\end{table}\n"
     )
 
 def render_all() -> dict[str, str]:

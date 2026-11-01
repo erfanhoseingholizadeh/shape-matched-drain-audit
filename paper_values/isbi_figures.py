@@ -18,7 +18,7 @@ from paper_values import generate_tex_figures as gtf
 
 OUT = ROOT / "paper_isbi" / "figures"
 WIDTH_IN = 178.0 / 25.4
-HEIGHT_IN = 1.8
+HEIGHT_IN = 1.35
 ARCH = (("dn", "densenet121"), ("rn", "resnet50"))
 
 MARK = {"densenet121": "o", "resnet50": "s"}
@@ -44,7 +44,7 @@ def gate_and_dose(out_dir: Path = OUT) -> Path:
         ax_a.axhline(0, color=gtf.GREY, linewidth=0.6, linestyle="--")
         ax_a.set_xticks(xs)
         ax_a.set_xticklabels([t for _, t in labels])
-        ax_a.set_ylabel("arm minus unedited (Δlogit)")
+        ax_a.set_ylabel("arm minus\nunedited (Δlogit)")
         ax_a.set_title("(a) Arms and primary contrast", loc="left")
         ax_a.spines[["top", "right"]].set_visible(False)
 
@@ -63,7 +63,7 @@ def gate_and_dose(out_dir: Path = OUT) -> Path:
         ax_b.set_yticks([-0.1, 0, 0.1, 0.5, 1, 2, 5])
         ax_b.set_yticklabels(["−0.1", "0", "0.1", "0.5", "1", "2", "5"])
         ax_b.set_xlabel("planting log odds ratio")
-        ax_b.set_ylabel("tube minus tissue tube (Δlogit)")
+        ax_b.set_ylabel("tube minus tissue\ntube (Δlogit)")
         ax_b.set_title("(b) Planted controls", loc="left")
         ax_b.legend(frameon=False, loc="lower right", handletextpad=0.2, borderaxespad=0.2)
         ax_b.spines[["top", "right"]].set_visible(False)
@@ -81,7 +81,7 @@ def gate_and_dose(out_dir: Path = OUT) -> Path:
         ax_c.set_xticks(range(5))
         ax_c.set_xticklabels([str(i) for i in range(5)])
         ax_c.set_xlabel("seed")
-        ax_c.set_ylabel("primary contrast (Δlogit)")
+        ax_c.set_ylabel("primary contrast\n(Δlogit)")
         ax_c.set_title("(c) Checkpoints", loc="left")
         ax_c.spines[["top", "right"]].set_visible(False)
         fig.tight_layout(pad=0.4, w_pad=1.0)
