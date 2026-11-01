@@ -1,0 +1,32 @@
+
+seed: 0
+backbone: densenet121
+pretrained: true
+
+data:
+  nih_root: data/raw/nih_chestxray14 # see README.md, Data -- NIH ChestX-ray14
+  neatx_csv: data/raw/neatx/neatx.csv # see README.md, Data -- NEATX
+  chexmask_csv: data/raw/chexmask/chestxray8.csv # see README.md, Data -- CheXmask
+  chexmask_rca_threshold: 0.7 # RESOLVED 2026-09-08 by external authority, not
+  donor_library_dir: data/processed/donor_library # edits/drain/donor_library.py
+  manifest_path: data/processed/manifests/nih_pneumothorax.csv
+  image_size: 224
+
+train:
+  epochs: 20
+  batch_size: 128 # RAISED
+  lr: 0.0004 # RAISED
+  lr_step_size: 5
+  lr_gamma: 0.5
+
+audit:
+  n_target_negatives: 500
+  donor_split: eval # eval-split donors only -- train-split donors are reserved
+  operating_point_threshold: 0.5
+  blend_mode: log_additive # Default switched from "poisson" 2026-07-30
+
+review:
+  output_dir: review/stage0_insertion_sample
+  n: 50
+
+output_dir: outputs/stage0_densenet121_nih # RECONCILED 2026-09-08: base path only,

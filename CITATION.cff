@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "Code for: Do Synthetic Chest-Drain Edits Reveal Shortcut Reliance? A Shape-Matched Audit of Pneumothorax Classifiers"
+type: software
+authors:
+  - family-names: Hoseingholizadeh
+    given-names: Erfan
+    affiliation: "University of Bologna, Italy"
+  - family-names: Khanmohammadi
+    given-names: Mahdieh
+    affiliation: "University of Stavanger, Norway"
+  - family-names: Farmanbar
+    given-names: Mina
+    affiliation: "University of Stavanger, Norway"
+repository-code: "https://github.com/YOURUSER/shape-matched-drain-audit"
+license: Apache-2.0

@@ -1,0 +1,14 @@
+# Direct requirements of the CUDA install (GPU cluster). Versions are the ones recorded for the cluster environment of the runs, with the CUDA 12.4 build of torch.
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.0
+scikit-image==0.26.0
+PyYAML==6.0.3
+pillow==12.3.0
+opencv-python-headless==5.0.0.93
+tqdm==4.70.0
+matplotlib==3.11.1
+pytest==9.1.1
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124

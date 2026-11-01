@@ -1,0 +1,33 @@
+seed: 0
+backbone: resnet50
+pretrained: true
+data:
+  nih_root: @CXR_CLUSTER_ROOT@/data/raw/nih_chestxray14/images
+  manifest_path: @CXR_CLUSTER_ROOT@/original_checkpoints/data/nih_pneumothorax_multilabel.csv
+  image_size: 224
+train:
+  epochs: 20
+  batch_size: 128
+  lr: 0.0004
+  lr_step_size: 5
+  lr_gamma: 0.5
+  num_workers: 16
+  label_columns:
+  - Atelectasis
+  - Cardiomegaly
+  - Consolidation
+  - Edema
+  - Effusion
+  - Emphysema
+  - Fibrosis
+  - Pneumothorax
+  - Mass
+  - Nodule
+  - Pleural_Thickening
+  - Pneumonia
+  - Hernia
+  - Infiltration
+  class_weighting: true
+  checkpoint_selection: true
+output_dir: @CXR_CLUSTER_ROOT@/further_runs/outputs/e4_resnet50
+final_checkpoint_archive_dir: @CXR_CLUSTER_ROOT@/further_runs/checkpoints_archive

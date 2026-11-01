@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+/.venv/
+/review/
+/data/
+/outputs/
+/checkpoints/
+/logs/
+/paper/*.aux
+/paper/*.log
+/paper/*.out
+/paper/*.blg
+/paper/*.bbl
+/paper/*.fls
+/paper/*.fdb_latexmk

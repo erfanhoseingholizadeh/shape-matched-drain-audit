@@ -1,0 +1,36 @@
+
+seed: 0
+backbone: resnet50
+pretrained: true
+
+data:
+  nih_root: data/raw/nih_chestxray14
+  neatx_csv: data/raw/neatx/neatx.csv
+  chexmask_csv: data/raw/chexmask/chestxray8.csv
+  chexmask_rca_threshold: 0.7
+  donor_library_dir: data/processed/donor_library
+  manifest_path: data/processed/manifests/nih_pneumothorax.csv
+  image_size: 224
+
+train:
+  epochs: 20
+  batch_size: 128
+  lr: 0.0004
+  lr_step_size: 5
+  lr_gamma: 0.5
+  num_workers: 16
+  label_columns: [Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion, Emphysema, Fibrosis, Pneumothorax, Mass, Nodule, Pleural_Thickening, Pneumonia, Hernia, Infiltration]
+  class_weighting: true
+  checkpoint_selection: true
+
+audit:
+  n_target_negatives: 500
+  donor_split: eval
+  operating_point_threshold: 0.5
+  blend_mode: log_additive
+
+review:
+  output_dir: review/stage0_insertion_sample
+  n: 50
+
+output_dir: outputs/stage0_resnet50_nih

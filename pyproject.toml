@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cxr-shortcuts"
+version = "0.1.0"
+description = "Code for a shape-matched audit of shortcut reliance in pneumothorax classifiers (NIH ChestX-ray14)."
+requires-python = "==3.12.*"
+license = { text = "Apache-2.0" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]

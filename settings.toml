@@ -1,0 +1,21 @@
+# Settings for the Slurm stages and the config generators. Read by slurm/cxr_settings.py.
+# Order of precedence: environment variable CXR_<KEY> (upper case), then this file, then the default in slurm/cxr_settings.py.
+# Point CXR_SETTINGS at another file to use it instead of this one. Values may use ${HOME}-style variables.
+
+# Directory on the cluster that holds the data, the virtual environment and one folder per stage (original_checkpoints, planted_control, heldout, ...).
+# Layout: <cluster_root>/data/raw/nih_chestxray14/images, <cluster_root>/data/raw/neatx, <cluster_root>/data/raw/chexmask,
+# <cluster_root>/venv312_gpu (the Python environment of the GPU jobs), <cluster_root>/<stage>/ (this repository, see slurm/link_stage_dirs.sh).
+cluster_root = "${HOME}/cxr_shortcuts"
+
+# Pin the jobs that carry a --nodelist line to one node. Empty: the line is dropped and the scheduler chooses.
+nodelist = ""
+
+# Nodes the jobs that carry an --exclude line must avoid. Empty: the line is dropped.
+exclude = ""
+
+# Slurm partitions. The original runs used one GPU partition and three CPU partitions of different node sizes (jobs asking for 16 CPUs and 48 GB).
+# Empty: the line is dropped and the scheduler's default partition is used.
+partition_gpu = "gpu"
+partition_cpu_small = "cpu"
+partition_cpu_mid = "cpu"
+partition_cpu_large = "cpu"
